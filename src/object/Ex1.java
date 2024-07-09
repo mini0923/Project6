@@ -5,6 +5,7 @@ public class Ex1 {
 	public static void main(String[] args) {
 
 		Student student = new Student("둘리", 10000);
+
 		Bus bus = new Bus(100);
 		Subway subway = new Subway("2호선");
 		
@@ -12,6 +13,7 @@ public class Ex1 {
 		student.showInfo();
 		bus.showInfo();
 		
+
 		student.takeSubway(subway);
 		student.showInfo();
 		subway.showInfo();	
@@ -84,6 +86,15 @@ class Student {
 	public void takeSubway(Subway subway) {
 		subway.take(1500);		// 1500원 지불
 		this.money = this.money -  1500; // 가진돈 1500원을 잃음
+	}
+
+	public void takeTaxi(Taxi taxi) {
+		if (money < 10000) {
+			System.out.println("소지금이 없어 택시를 이용할 수 없습니다.");
+			return;
+		}
+		taxi.take(10000);
+		this.money = this.money - 10000;
 	}
 	
 	public void showInfo() {
